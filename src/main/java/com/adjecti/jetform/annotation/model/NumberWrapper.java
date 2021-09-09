@@ -1,6 +1,7 @@
 package com.adjecti.jetform.annotation.model;
 
 import com.adjecti.jetform.annotation.FormField;
+import com.adjecti.jetform.annotation.helperclasses.FormBuilderUtils;
 
 public class NumberWrapper extends FormFieldBase{
 	private String format;
@@ -30,5 +31,6 @@ public class NumberWrapper extends FormFieldBase{
 		setFieldType(formField.fieldType().name());
 		setListable(formField.listable());
 		setFormat(formField.number().format());
+		setValidtions(FormBuilderUtils.getValidation(formField));
 	}
 }

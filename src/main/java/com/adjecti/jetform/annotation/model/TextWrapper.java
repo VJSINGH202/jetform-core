@@ -1,10 +1,7 @@
 package com.adjecti.jetform.annotation.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.adjecti.jetform.annotation.FormField;
-import com.adjecti.jetform.annotation.Validation;
+import com.adjecti.jetform.annotation.helperclasses.FormBuilderUtils;
 
 public class TextWrapper extends FormFieldBase{
 	
@@ -23,16 +20,20 @@ public class TextWrapper extends FormFieldBase{
 		setValue(formField.value());
 		setFieldType(formField.fieldType().name());
 		setListable(formField.listable());
-		setValidtions(getValidation(formField));
+		setValidtions(FormBuilderUtils.getValidation(formField));
 	}
 	
-	public List<com.adjecti.jetform.annotation.model.Validation> getValidation(FormField formField){
-		List<com.adjecti.jetform.annotation.model.Validation> validations = new ArrayList<>();
-		for(Validation validation:formField.validations().validations()) 
-			validations.add(new com.adjecti.jetform.annotation.model.Validation(validation.type().name(), validation.value()));
-		
-		return validations;
-	}
+	/*
+	 * public List<com.adjecti.jetform.annotation.model.Validation>
+	 * getValidation(FormField formField){
+	 * List<com.adjecti.jetform.annotation.model.Validation> validations = new
+	 * ArrayList<>(); for(Validation
+	 * validation:formField.validations().validations()) validations.add(new
+	 * com.adjecti.jetform.annotation.model.Validation(validation.type().name(),
+	 * validation.value()));
+	 * 
+	 * return validations; }
+	 */
 	@Override
 	public String toString() {
 		return "TextWrapper [id=" + id + ", name=" + name + ", label=" + label + ", value=" + value + ", placeHolder="
